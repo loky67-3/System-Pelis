@@ -111,7 +111,7 @@ export default function Home() {
           </h1>
           <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', fontSize: '16px', fontWeight: 'bold', color: '#46d369' }}>
             <span>98% Coincidencia</span>
-            <span style={{ color: '#fff' }}>2024</span>
+            <span style={{ color: '#fff' }}>2026</span>
             <span style={{ border: '1px solid #fff', padding: '0 5px', color: '#fff', fontSize: '12px' }}>TV-MA</span>
           </div>
           <p style={{ maxWidth: '600px', fontSize: '18px', lineHeight: '1.4', textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>

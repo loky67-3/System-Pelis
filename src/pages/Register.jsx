@@ -145,11 +145,7 @@ export default function Register() {
           Galería <span style={{ color: "#e50914" }}>VIP</span>
         </h2>
         
-        <div style={{ 
-          display: "grid", 
-          gridTemplateColumns: "repeat(5, 1fr)",
-          width: "100%",
-        }}>
+        <div className="vip-gallery">
           {[
             "https://image.tmdb.org/t/p/w500/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg",
             "https://image.tmdb.org/t/p/w500/sh7Rg8Er3tFcN9BpKIPOMvALgZd.jpg",

@@ -1,5 +1,5 @@
-import { auth, googleProvider, db } from "../firebase/firebase";
-import { signInWithPopup } from "firebase/auth";
+import { auth, db } from "../firebase/firebase";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -13,41 +13,53 @@ export default function Login() {
     setIsLoggingIn(true);
     setError(null);
     try {
-      // Forzar selección de cuenta para evitar bloqueos de seguridad automáticos
-      googleProvider.setCustomParameters({ prompt: "select_account" });
-      const result = await signInWithPopup(auth, googleProvider);
+      const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: "select_account" });
+      const result = await signInWithPopup(auth, provider);
       const user = result.user;
+      
+      let userRole = "user"; // Rol por defecto
 
-      const ref = doc(db, "users", user.uid);
-      const snap = await getDoc(ref);
-
-      let role = "user";
-
-      if (!snap.exists()) {
-        await setDoc(ref, {
-          name: user.displayName,
-          email: user.email,
-          role: "user",
-          createdAt: new Date(),
-        });
+      // 🔥 LÓGICA ROBUSTA: Determinar el rol ANTES de navegar.
+      // Primero, la regla infalible para el admin.
+      if (user.email === "carlosoficcial42@gmail.com") {
+        userRole = "admin";
       } else {
-        role = snap.data().role;
+        // Para otros usuarios, intentar leer el rol de la base de datos.
+        try {
+          const userRef = doc(db, "users", user.uid);
+          const docSnap = await getDoc(userRef);
+          if (docSnap.exists()) {
+            userRole = docSnap.data().role || "user";
+          } else {
+            // Si el usuario no existe en la DB, lo creamos.
+            await setDoc(userRef, {
+              name: user.displayName, email: user.email, role: "user", createdAt: new Date()
+            });
+          }
+        } catch (dbError) {
+          console.warn("Aviso: Firestore offline. Se continuará como usuario estándar.", dbError.message);
+          // Si la base de datos falla, no bloqueamos el login, continuamos como 'user'.
+        }
       }
 
-      // 🔥 REDIRECCIÓN CORRECTA
-      if (role === "admin") {
+      // 🔥 REDIRECCIÓN SEGURA: Navegar al dashboard correspondiente.
+      if (userRole === "admin") {
         navigate("/admin", { replace: true });
       } else {
         navigate("/user", { replace: true });
       }
+
     } catch (error) {
       console.error("Error Google:", error);
       if (error.code === 'auth/popup-closed-by-user') {
         setError("Cancelaste el inicio de sesión.");
       } else if (error.code === 'auth/popup-blocked') {
         setError("El navegador bloqueó la ventana. Permite los pop-ups.");
+      } else if (error.code === 'auth/unauthorized-domain') {
+        setError("Dominio no autorizado. Agrega tu URL en Firebase Authentication > Settings > Authorized Domains.");
       } else {
-        setError("No se pudo acceder. Verifica tu conexión o intenta más tarde.");
+        setError(`Error: ${error.message}`);
       }
     } finally {
       setIsLoggingIn(false);

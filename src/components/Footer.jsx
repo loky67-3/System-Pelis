@@ -30,11 +30,16 @@ export default function Footer() {
           <li><a href="/contact">Contáctanos</a></li>
         </ul>
 
-        {/* BOTÓN CÓDIGO DE SERVICIO */}
-        <button className="service-code-btn">Código de servicio</button>
+        {/* SELECTOR DE IDIOMA */}
+        <div className="language-selector-wrapper">
+          <select name="lang" id="lang-selector" className="language-selector">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+          </select>
+        </div>
 
         <p className="footer-copy">
-          ©  2026 SysPelis Charly, Inc.
+          © 2026 SysPelis Charly, Inc.
         </p>
 
       </div>
