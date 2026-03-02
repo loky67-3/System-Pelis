@@ -4,7 +4,7 @@ import { auth } from "../firebase/firebase"; // Asegúrate que coincida con el n
 import { signOut } from "firebase/auth";
 import { useAuth } from "../context/AuthContext";
 
-export default function Header() {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { user, role } = useAuth(); // Usamos el usuario y rol desde el contexto global
   const navigate = useNavigate();
