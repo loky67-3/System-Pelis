@@ -77,13 +77,13 @@ const Top10Item = ({ movie, index, onClick }) => {
     >
       {/* El Número Gigante */}
       <span style={{ 
-        fontSize: '260px', 
+        fontSize: '320px', 
         fontFamily: '"Montserrat", sans-serif',
-        fontWeight: '800', 
+        fontWeight: '900', 
         color: '#000', 
-        WebkitTextStroke: '5px #595959',
+        WebkitTextStroke: '6px #595959',
         textShadow: '0 0 20px rgba(0,0,0,0.5)',
-        lineHeight: '1',
+        lineHeight: '0.8',
         position: 'absolute',
         left: '-25px',
         bottom: '-15px',
@@ -154,8 +154,8 @@ export default function Home() {
         className="hero-netflix" 
         style={{ 
           height: '100vh',
-          background: `linear-gradient(to right, #141414 5%, rgba(20,20,20,0.2) 50%, rgba(20,20,20,0) 100%), 
-                       linear-gradient(to top, #141414 5%, rgba(20,20,20,0) 30%), 
+          background: `linear-gradient(to right, #141414 10%, rgba(20,20,20,0.1) 50%, rgba(20,20,20,0) 100%), 
+                       linear-gradient(to top, #141414 2%, rgba(20,20,20,0) 25%), 
                        url("${featuredMovie.image}")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center center'
@@ -163,10 +163,10 @@ export default function Home() {
       >
         <div className="hero-overlay" style={{ paddingLeft: '60px', background: 'none', maxWidth: '800px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '45px' }} />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '55px' }} />
             <span style={{ letterSpacing: '5px', fontWeight: '800', color: '#e5e5e5', fontSize: '18px' }}>PELÍCULA</span>
           </div>
-          <h1 className="netflix-logo" style={{ fontSize: 'clamp(2.5rem, 10vw, 6rem)', marginBottom: '15px', color: '#fff', textShadow: 'none' }}>
+          <h1 className="netflix-logo" style={{ fontSize: 'clamp(3rem, 12vw, 7rem)', marginBottom: '15px', color: '#fff', textShadow: '2px 2px 10px rgba(0,0,0,0.5)' }}>
             {featuredMovie.title}
           </h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '25px', fontSize: '1.4rem', fontWeight: 'bold' }}>
