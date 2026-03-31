@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 // Datos simulados (Mock Data)
 const featuredMovie = {
   title: "DUNA: PARTE DOS",
-  description: "Paul Atreides se une a Chani y a los Fremen en una guerra de venganza contra los conspiradores que destruyeron a su familia. Al enfrentarse a una elección entre el amor de su vida y el destino del universo, lucha por evitar un futuro terrible cinematográfico.",
-  image: "https://image.tmdb.org/t/p/original/8Y99mUfW99Z97S31Z39tN6S17mN.jpg",
+  description: "Paul Atreides se une a Chani y a los Fremen en una guerra de venganza contra los conspiradores que destruyeron a su familia. Al enfrentarse a una elección entre el amor de su vida y el destino del universo, lucha por evitar un futuro terrible.",
+  image: "https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg",
 };
 
 const trendingNow = [
@@ -154,8 +154,8 @@ export default function Home() {
         className="hero-netflix"
         style={{ 
           height: '100vh',
-          background: `linear-gradient(to right, #141414 15%, rgba(20,20,20,0.2) 50%, rgba(20,20,20,0) 100%), 
-                       linear-gradient(to top, #141414 10%, rgba(20,20,20,0) 40%), 
+          background: `linear-gradient(to right, #141414 10%, rgba(20,20,20,0.1) 40%, rgba(20,20,20,0) 80%), 
+                       linear-gradient(to top, #141414 5%, rgba(20,20,20,0) 25%), 
                        url("${featuredMovie.image}")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center center'
