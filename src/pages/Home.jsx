@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 // Datos simulados (Mock Data)
 const featuredMovie = {
-  title: "DUNA: PARTE DOS",
-  description: "Paul Atreides se une a Chani y a los Fremen en una guerra de venganza contra los conspiradores que destruyeron a su familia. Al enfrentarse a una elección entre el amor de su vida y el destino del universo, lucha por evitar un futuro terrible.",
-  image: "https://image.tmdb.org/t/p/original/8Y99mUfW99Z97S31Z39tN6S17mN.jpg",
+  title: "GLADIADOR II",
+  description: "Años después de presenciar la muerte del héroe Máximo, Lucio se ve obligado a entrar en el Coliseo tras ser capturado por los tiránicos emperadores que ahora dirigen Roma con mano de hierro. Una epopeya de venganza y honor.",
+  image: "https://image.tmdb.org/t/p/original/6XjMwS0vY6ZfXvC79pSshfUvO.jpg",
 };
 
 const trendingNow = [
@@ -153,7 +153,7 @@ export default function Home() {
       <section 
         className="hero-netflix"
         style={{ 
-          height: '110vh', /* Un poco más alto para mayor impacto */
+          height: '100vh',
           background: `linear-gradient(to right, #141414 15%, rgba(20,20,20,0.2) 50%, rgba(20,20,20,0) 100%), 
                        linear-gradient(to top, #141414 10%, rgba(20,20,20,0) 40%), 
                        url("${featuredMovie.image}")`,
@@ -161,9 +161,8 @@ export default function Home() {
           backgroundPosition: 'center center'
         }}
       >
-        {/* Aumentamos el padding-top para bajar el contenido y zIndex para que no se tape */}
-        <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '280px', background: 'none', maxWidth: '850px', zIndex: 25 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
+        <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '200px', background: 'none', maxWidth: '850px', zIndex: 25 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '55px' }} />
             <span style={{ letterSpacing: '5px', fontWeight: '800', color: '#e5e5e5', fontSize: '22px' }}>PELÍCULA</span>
           </div>
@@ -179,26 +178,11 @@ export default function Home() {
           <p style={{ fontSize: '1.4rem', lineHeight: '1.4', color: '#fff', textShadow: '2px 2px 4px rgba(0,0,0,0.4)', marginBottom: '30px' }}>
             {featuredMovie.description}
           </p>
-
-          <div style={{ display: 'flex', gap: '15px' }}>
-            <button 
-              className="hero-btn"
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px', padding: '12px 40px', fontSize: '1.4rem', background: '#fff', color: '#000', borderRadius: '4px' }}
-              onClick={() => navigate('/register')}
-              onMouseOver={(e) => e.target.style.background = '#e6e6e6'}
-              onMouseOut={(e) => e.target.style.background = '#fff'}
-            >
-              <span style={{ fontSize: '2rem' }}>▶</span> Reproducir
-            </button>
-            <button className="hero-btn" style={{ background: 'rgba(109, 109, 110, 0.7)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px', padding: '12px 35px', fontSize: '1.4rem', borderRadius: '4px' }}>
-              <span>ℹ️</span> Más Información
-            </button>
-          </div>
         </div>
       </section>
 
       {/* === CATEGORÍAS DE PELÍCULAS === */}
-      <div className="content-overlap" style={{ marginTop: '-180px', background: 'transparent', position: 'relative', zIndex: '20' }}>
+      <div className="content-overlap" style={{ marginTop: '20px', background: 'transparent', position: 'relative', zIndex: '20' }}>
         
         {/* SECCIÓN TOP 10 (NÚMEROS) */}
         <section style={{ padding: '20px 4%', marginBottom: '20px' }}>
@@ -210,25 +194,19 @@ export default function Home() {
             overflowX: 'auto', 
             scrollbarWidth: 'none',
             msOverflowStyle: 'none'
-          }}>
-            {trendingNow.slice(0, 10).map((movie, index) => (
-              <Top10Item key={movie.id} movie={movie} index={index} onClick={() => setSelectedMovie(movie)} />
+          }}>N=> (ndex} onClick={() => setSelectedMovie(movie)} />
             ))}
           </div>
-        </section>
-
+        </secti
         {categories.map((cat, index) => (
           <section key={index} className="movies-section" style={{ padding: '20px 4%', boxSizing: 'border-box' }}>
-            <h2 className="section-title" style={{ fontSize: '24px', marginBottom: '15px', fontWeight: 'bold', color: '#e5e5e5' }}>
-              {cat.title}
+            <h2 className="section-title" style={{ fontSize: '
             </h2>
 
-            <div className="movie-row" style={{ display: 'flex', gap: '10px', overflowX: 'auto' }}>
-              {cat.movies.map((movie) => (
-                <div
+            <div className="movie-row" style={{ display: v
                   key={movie.id}
                   className="movie-card"
-                  style={{ minWidth: '150px', transition: 'transform 0.3s' }}
+               {{ minWidth: '150px', transition: 'transform 0.3s' }}
                 >
                   <img 
                     src={movie.image} 

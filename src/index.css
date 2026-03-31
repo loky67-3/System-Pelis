@@ -215,14 +215,14 @@ h1, h2, h3, h4, h5, h6, .hero-btn, .nav a, .service-code-btn {
 ========================= */
 .hero-netflix {
   position: relative;
-  height: calc(100vh - 70px);
-  background: url("https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg") center/cover no-repeat;
+  height: 90vh;
+  background-color: #000;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, #141414 15%, transparent 85%);
+  background: linear-gradient(to right, #141414 20%, transparent 80%), linear-gradient(to top, #141414 5%, transparent 30%);
   padding-left: 60px;
   display: flex;
   flex-direction: column;
@@ -264,7 +264,7 @@ h1, h2, h3, h4, h5, h6, .hero-btn, .nav a, .service-code-btn {
    MOVIES SECTION
 ========================= */
 .content-overlap {
-  margin-top: -100px;
+  margin-top: 20px;
   position: relative;
   z-index: 10;
   padding-bottom: 40px;
