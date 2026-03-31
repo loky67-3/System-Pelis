@@ -77,13 +77,13 @@ const Top10Item = ({ movie, index, onClick }) => {
     >
       {/* El Número Gigante */}
       <span style={{ 
-        fontSize: '320px', 
+        fontSize: '280px', /* Ajustado para escala 0.9 */
         fontFamily: '"Montserrat", sans-serif',
         fontWeight: '900', 
         color: '#000', 
         WebkitTextStroke: '6px #595959',
         textShadow: '0 0 20px rgba(0,0,0,0.5)',
-        lineHeight: '0.8',
+        lineHeight: '0.9',
         position: 'absolute',
         left: '-25px',
         bottom: '-15px',
@@ -155,7 +155,7 @@ export default function Home() {
         style={{ 
           height: '100vh',
           background: `linear-gradient(to right, #141414 10%, rgba(20,20,20,0.1) 50%, rgba(20,20,20,0) 100%), 
-                       linear-gradient(to top, #141414 2%, rgba(20,20,20,0) 25%), 
+                       linear-gradient(to top, #141414 5%, rgba(20,20,20,0) 25%), 
                        url("${featuredMovie.image}")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center center'
@@ -166,11 +166,11 @@ export default function Home() {
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '55px' }} />
             <span style={{ letterSpacing: '5px', fontWeight: '800', color: '#e5e5e5', fontSize: '18px' }}>PELÍCULA</span>
           </div>
-          <h1 className="netflix-logo" style={{ fontSize: 'clamp(3rem, 12vw, 7rem)', marginBottom: '15px', color: '#fff', textShadow: '2px 2px 10px rgba(0,0,0,0.5)' }}>
+          <h1 className="netflix-logo" style={{ fontSize: 'clamp(3rem, 10vw, 6.5rem)', marginBottom: '15px', color: '#fff', textShadow: '2px 2px 10px rgba(0,0,0,0.5)' }}>
             {featuredMovie.title}
           </h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '25px', fontSize: '1.4rem', fontWeight: 'bold' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Number_10_in_red_rounded_square.svg/200px-Number_10_in_red_rounded_square.svg.png" alt="10" style={{ height: '30px' }} />
               <span style={{ color: '#fff' }}>N.º 1 en películas hoy</span>
             </div>

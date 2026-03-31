@@ -11,8 +11,8 @@
 html,
 body,
 #root {
-  zoom: 0.7; /* Escala global al 70% para estilo TV moderno */
-  -moz-transform: scale(0.7); /* Soporte para Firefox */
+  zoom: 0.9; 
+  -moz-transform: scale(0.9); /* Sincronizado con el zoom 0.9 */
   -moz-transform-origin: top center;
   width: 100%;
   min-height: 100%;
@@ -61,10 +61,10 @@ h1, h2, h3, h4, h5, h6, .hero-btn, .nav a, .service-code-btn {
 }
 
 .header-container {
-  max-width: 1200px;
+  max-width: 95%; /* Más ancho para aprovechar el zoom 0.9 */
   height: 100%;
   margin: auto;
-  padding: 0 20px;
+  padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -222,7 +222,7 @@ h1, h2, h3, h4, h5, h6, .hero-btn, .nav a, .service-code-btn {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, #141414 10%, transparent 70%);
+  background: linear-gradient(to right, #141414 15%, transparent 85%);
   padding-left: 60px;
   display: flex;
   flex-direction: column;
