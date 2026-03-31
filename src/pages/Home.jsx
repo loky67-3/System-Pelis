@@ -50,12 +50,6 @@ const categories = [
   }
 ];
 
-const plans = [
-  { name: "Básico", price: "$99", quality: "Buena", resolution: "720p", devices: "1 dispositivo", color: "#e50914" },
-  { name: "Estándar", price: "$169", quality: "Mejor", resolution: "1080p", devices: "2 dispositivos", color: "#223366" },
-  { name: "Premium", price: "$229", quality: "Óptima", resolution: "4K+HDR", devices: "4 dispositivos", color: "#b81d24" },
-];
-
 // Componente para los números del Top 10
 const Top10Item = ({ movie, index, onClick }) => {
   return (
@@ -109,6 +103,50 @@ const Top10Item = ({ movie, index, onClick }) => {
   );
 };
 
+// Iconos SVG para los planes
+const PlanIcons = {
+  Check: () => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#46d369" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  ),
+  Screen: () => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+  ),
+  Quality: () => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+  ),
+  Devices: () => (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="10" rx="2" ry="2"></rect><rect x="11" y="14" width="7" height="5" rx="1" ry="1"></rect><path d="M8 18h.01"></path></svg>
+  )
+};
+
+const plans = [
+  { 
+    name: "Básico", 
+    price: "99", 
+    quality: "Buena calidad", 
+    resolution: "720p (HD)", 
+    devices: "1 pantalla", 
+    color: "#60a5fa" 
+  },
+  { 
+    name: "Estándar", 
+    price: "169", 
+    quality: "Gran calidad", 
+    resolution: "1080p (Full HD)", 
+    devices: "2 pantallas", 
+    color: "#e50914",
+    popular: true 
+  },
+  { 
+    name: "Premium", 
+    price: "229", 
+    quality: "Cine en casa", 
+    resolution: "4K + HDR / Dolby Atmos", 
+    devices: "4 pantallas", 
+    color: "#fbbf24" 
+  },
+];
+
 export default function Home() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const navigate = useNavigate();
@@ -150,27 +188,27 @@ export default function Home() {
   return (
     <div className="netflix-page" style={{ overflowX: 'hidden', marginTop: '0' }}>
       {/* === HERO SECTION === */}
-      <section 
+      <section
         className="hero-netflix"
-        style={{ 
+        style={{
           height: '100vh',
-          background: `linear-gradient(to right, #020617 10%, rgba(2, 6, 23, 0.1) 40%, rgba(2, 6, 23, 0) 80%), 
-                       linear-gradient(to top, #020617 5%, rgba(2, 6, 23, 0) 25%), 
+          background: `linear-gradient(to right, #020617 15%, rgba(2, 6, 23, 0.2) 50%, rgba(2, 6, 23, 0) 100%), 
+                       linear-gradient(to top, #020617 5%, rgba(2, 6, 23, 0) 30%), 
                        url("${featuredMovie.image}")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center center'
         }}
       >
-        <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '220px', background: 'none', maxWidth: '850px', zIndex: 25 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '55px' }} />
-            <span style={{ letterSpacing: '5px', fontWeight: '800', color: '#e5e5e5', fontSize: '22px' }}>PELÍCULA</span>
+        <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '280px', background: 'none', maxWidth: '850px', zIndex: 25 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '50px' }} />
+            <span style={{ letterSpacing: '5px', fontWeight: '800', color: '#e5e5e5', fontSize: '18px' }}>PELÍCULA</span>
           </div>
-          <h1 className="netflix-logo" style={{ fontSize: 'clamp(3rem, 10vw, 6.5rem)', marginBottom: '15px', color: '#fff', textShadow: '2px 2px 10px rgba(0,0,0,0.5)' }}>
+          <h1 className="netflix-logo" style={{ fontSize: 'clamp(3rem, 10vw, 7rem)', marginBottom: '15px', color: '#fff', textShadow: '4px 4px 15px rgba(0,0,0,0.5)' }}>
             {featuredMovie.title}
           </h1>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '25px', fontSize: '1.4rem', fontWeight: 'bold' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '25px', fontSize: '1.2rem', fontWeight: 'bold' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Number_10_in_red_rounded_square.svg/200px-Number_10_in_red_rounded_square.svg.png" alt="10" style={{ height: '30px' }} />
               <span style={{ color: '#fff' }}>N.º 1 en películas hoy</span>
             </div>
@@ -237,46 +275,56 @@ export default function Home() {
       </div>
 
       {/* === SECCIÓN DE PLANES === */}
-      <section style={{ background: 'linear-gradient(to bottom, #020617, #010409)', padding: '60px 20px', textAlign: 'center', borderTop: '4px solid #0f172a' }}>
-        <h2 style={{ fontSize: '32px', marginBottom: '10px' }}>Selecciona tu Plan</h2>
-        <p style={{ color: '#999', marginBottom: '40px' }}>Disfruta de la mejor calidad sin límites.</p>
+      <section style={{ padding: '100px 4%', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '3rem', fontWeight: '800', marginBottom: '15px', letterSpacing: '-1px' }}>Elige el plan ideal para ti</h2>
+        <p style={{ color: '#aaa', fontSize: '1.3rem', marginBottom: '60px' }}>Cambia o cancela tu plan en cualquier momento.</p>
         
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', flexWrap: 'wrap', alignItems: 'stretch' }}>
           {plans.map((plan, idx) => (
             <div key={idx} style={{ 
-              background: 'linear-gradient(145deg, #1f1f1f, #141414)', 
-              padding: '30px', 
-              borderRadius: '12px', 
+              background: 'rgba(15, 23, 42, 0.6)', 
+              backdropFilter: 'blur(12px)',
+              padding: '40px 30px', 
+              borderRadius: '24px', 
               width: '100%', 
-              maxWidth: '280px',
-              border: `1px solid ${plan.color}`,
-              boxShadow: '0 10px 20px rgba(0,0,0,0.5)',
+              maxWidth: '320px',
+              border: `2px solid ${plan.popular ? plan.color : 'rgba(255,255,255,0.1)'}`,
+              boxShadow: plan.popular ? `0 0 40px ${plan.color}33` : '0 20px 40px rgba(0,0,0,0.4)',
               position: 'relative',
-              overflow: 'hidden'
+              transition: 'transform 0.3s ease, border-color 0.3s',
+              display: 'flex',
+              flexDirection: 'column',
+              cursor: 'default'
             }}>
-              <div style={{ background: plan.color, color: 'white', padding: '5px 10px', position: 'absolute', top: 0, right: 0, fontSize: '12px', fontWeight: 'bold', borderBottomLeftRadius: '8px' }}>
-                {plan.resolution}
+              {plan.popular && (
+                <div style={{ background: plan.color, color: '#fff', padding: '6px 20px', position: 'absolute', top: '-18px', left: '50%', transform: 'translateX(-50%)', fontSize: '14px', fontWeight: '800', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                  Más Popular
+                </div>
+              )}
+              <h3 style={{ fontSize: '22px', fontWeight: '700', marginBottom: '10px', color: plan.color }}>{plan.name}</h3>
+              <div style={{ marginBottom: '30px' }}>
+                <span style={{ fontSize: '48px', fontWeight: '900' }}>${plan.price}</span>
+                <span style={{ color: '#aaa', fontSize: '18px' }}>/mes</span>
               </div>
-              <h3 style={{ fontSize: '24px', marginBottom: '10px' }}>{plan.name}</h3>
-              <h4 style={{ fontSize: '36px', fontWeight: 'bold', marginBottom: '20px' }}>{plan.price}<span style={{ fontSize: '14px', fontWeight: 'normal' }}>/mes</span></h4>
               
-              <ul style={{ listStyle: 'none', textAlign: 'left', marginBottom: '30px', color: '#ccc', lineHeight: '2' }}>
-                <li>✓ Calidad de video: <span style={{ color: '#fff' }}>{plan.quality}</span></li>
-                <li>✓ Resolución: <span style={{ color: '#fff' }}>{plan.resolution}</span></li>
-                <li>✓ Dispositivos: <span style={{ color: '#fff' }}>{plan.devices}</span></li>
-                <li>✓ Sin anuncios</li>
+              <ul style={{ listStyle: 'none', textAlign: 'left', marginBottom: '40px', flex: 1 }}>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '18px', fontSize: '15px' }}><PlanIcons.Quality /> {plan.quality}</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '18px', fontSize: '15px' }}><PlanIcons.Screen /> {plan.resolution}</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '18px', fontSize: '15px' }}><PlanIcons.Devices /> {plan.devices}</li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '15px', color: '#46d369' }}><PlanIcons.Check /> Sin anuncios</li>
               </ul>
 
               <button style={{ 
                 width: '100%', 
-                padding: '12px', 
-                background: plan.color, 
+                padding: '16px', 
+                background: plan.popular ? plan.color : 'rgba(255,255,255,0.1)', 
                 color: 'white', 
                 border: 'none', 
-                borderRadius: '4px', 
-                fontWeight: 'bold', 
+                borderRadius: '12px', 
+                fontWeight: '800', 
                 cursor: 'pointer',
-                fontSize: '16px'
+                fontSize: '16px',
+                transition: 'filter 0.3s'
               }}>
                 Elegir Plan
               </button>
