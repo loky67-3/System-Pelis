@@ -15,13 +15,13 @@ export default function Register() {
   ];
 
   // Construimos la URL de la playlist para YouTube
-  // autoplay=1: Inicia solo
-  // controls=0: Interfaz limpia
-  // playlist: IDs separados por coma para que sigan uno tras otro
-  // mute=0: Con audio activado
+  // controls=0: Elimina la barra de tiempo y adelantar
+  // modestbranding=1: Quita el logo de YouTube
+  // iv_load_policy=3: Quita anotaciones de video
+  // disablekb=1: Desactiva atajos de teclado
   const firstVideo = trailerPlaylist[0];
   const remainingPlaylist = trailerPlaylist.slice(1).join(",");
-  const cinematicUrl = `https://www.youtube.com/embed/${firstVideo}?autoplay=1&controls=1&loop=1&playlist=${remainingPlaylist},${firstVideo}&mute=0&vq=hd1080&rel=0`;
+  const cinematicUrl = `https://www.youtube.com/embed/${firstVideo}?autoplay=1&controls=0&loop=1&playlist=${remainingPlaylist},${firstVideo}&mute=0&vq=hd1080&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1`;
 
   return (
     <div style={{ 
