@@ -154,8 +154,8 @@ export default function Home() {
         className="hero-netflix"
         style={{ 
           height: '100vh',
-          background: `linear-gradient(to right, #141414 10%, rgba(20,20,20,0.1) 40%, rgba(20,20,20,0) 80%), 
-                       linear-gradient(to top, #141414 5%, rgba(20,20,20,0) 25%), 
+          background: `linear-gradient(to right, #020617 10%, rgba(2, 6, 23, 0.1) 40%, rgba(2, 6, 23, 0) 80%), 
+                       linear-gradient(to top, #020617 5%, rgba(2, 6, 23, 0) 25%), 
                        url("${featuredMovie.image}")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center center'
@@ -237,7 +237,7 @@ export default function Home() {
       </div>
 
       {/* === SECCIÓN DE PLANES === */}
-      <section style={{ background: 'linear-gradient(to bottom, #141414, #000)', padding: '60px 20px', textAlign: 'center', borderTop: '4px solid #222' }}>
+      <section style={{ background: 'linear-gradient(to bottom, #020617, #010409)', padding: '60px 20px', textAlign: 'center', borderTop: '4px solid #0f172a' }}>
         <h2 style={{ fontSize: '32px', marginBottom: '10px' }}>Selecciona tu Plan</h2>
         <p style={{ color: '#999', marginBottom: '40px' }}>Disfruta de la mejor calidad sin límites.</p>
         
