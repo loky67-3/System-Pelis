@@ -6,27 +6,34 @@ export default function Register() {
 
   // Lista de IDs de videos HD para la reproducción continua
   const trailerPlaylist = [
-    "bjL7q97J8uA", // Gladiator II - Estreno Épico (Impresionante en HD)
-    "d9My665987w", // Avatar: El Camino del Agua - Visuales de Infarto
-    "Way9Dexny3w", // Dune: Parte Dos - Obra Maestra Cinematográfica
-    "shW9i6k8cB0", // Spider-Man: Across the Spider-Verse - Explosión de Color
-    "73_1biulkYk"  // Deadpool & Wolverine - Acción Pura
+    "bjL7q97J8uA", // Gladiator II (Paramount Pictures)
+    "_OKAwz2jBI0", // Joker: Folie à Deux (Warner Bros)
+    "U2Qp5pL3ovA", // Dune: Part Two (Warner Bros)
+    "giXco2jaZ_4", // Top Gun: Maverick (Paramount Pictures)
+    "hR1-S223e5k"  // Bad Boys: Ride or Die (Sony Pictures)
   ];
 
   const firstVideo = trailerPlaylist[0];
   // URL ultra-limpia: autoplay, sin controles, sin logos y en HD
-  const cinematicUrl = `https://www.youtube.com/embed/${firstVideo}?playlist=${trailerPlaylist.join(",")}&autoplay=1&mute=0&controls=0&loop=1&modestbranding=1&rel=0&vq=hd1080&iv_load_policy=3&disablekb=1&autohide=1`;
+  const cinematicUrl = `https://www.youtube.com/embed/${firstVideo}?playlist=${trailerPlaylist.join(",")}&autoplay=1&mute=0&controls=0&loop=1&modestbranding=1&rel=0&vq=hd1080&iv_load_policy=3&disablekb=1&fs=0`;
 
   return (
     <div style={{ 
       position: "fixed",
-      // Ajuste perfecto: 118vw/vh cubren exactamente el monitor físico al tener zoom 0.85
+      // Compensación exacta para el zoom 0.85 (100 / 0.85 = 117.65)
       top: 0,
       left: 0,
-      width: "118vw",
-      height: "118vh",
+      width: "117.7vw",
+      height: "117.7vh",
       zIndex: 99999,
-      overflow: "hidden"
+      overflow: "hidden",
+      backgroundColor: "#000",
+      // Reset del zoom para que el video no se procese dos veces y se vea nítido
+      zoom: 1,
+      transform: "scale(1)",
+      transformOrigin: "top left",
+      textRendering: "optimizeLegibility",
+      WebkitFontSmoothing: "antialiased"
     }}>
       
       {/* BOTÓN REGRESAR AL HOME */}
@@ -76,7 +83,7 @@ export default function Register() {
           style={{ 
             width: "100%", 
             height: "100%", 
-            transform: "scale(1.5)", // Escala para ocultar los bordes negros y la interfaz de YouTube
+            transform: "scale(1.1)", // Escala reducida para maximizar nitidez y ocultar UI
             border: "none" 
           }}
         ></iframe>
