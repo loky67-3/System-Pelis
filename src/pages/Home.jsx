@@ -150,22 +150,35 @@ export default function Home() {
   return (
     <div className="netflix-page" style={{ overflowX: 'hidden', marginTop: '0' }}>
       {/* === HERO SECTION === */}
-      <sec
+      <section 
+        className="hero-netflix"
         style={{ 
           height: '110vh', /* Un poco más alto para mayor impacto */
-          0,20,20,0) 40%), 
+          background: `linear-gradient(to right, #141414 15%, rgba(20,20,20,0.2) 50%, rgba(20,20,20,0) 100%), 
+                       linear-gradient(to top, #141414 10%, rgba(20,20,20,0) 40%), 
                        url("${featuredMovie.image}")`,
-          backgrou:
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center'
+        }}
+      >
         {/* Añadimos un padding-top de 100px para que el Navbar no tape el texto */}
         <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '100px', background: 'none', maxWidth: '850px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
-            <img stt3e
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '55px' }} />
+            <span style={{ letterSpacing: '5px', fontWeight: '800', color: '#e5e5e5', fontSize: '18px' }}>PELÍCULA</span>
+          </div>
+          <h1 className="netflix-logo" style={{ fontSize: 'clamp(3rem, 10vw, 6.5rem)', marginBottom: '15px', color: '#fff', textShadow: '2px 2px 10px rgba(0,0,0,0.5)' }}>
+            {featuredMovie.title}
+          </h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '25px', fontSize: '1.4rem', fontWeight: 'bold' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Number_10_in_red_rounded_square.svg/200px-Number_10_in_red_rounded_square.svg.png" alt="10" style={{ height: '30px' }} />
               <span style={{ color: '#fff' }}>N.º 1 en películas hoy</span>
-            </div>   <p style={{ fontSize: '1.4rem', lineHeight: '1.4', color: '#fff', textShadow: '2px 2px 4px rgba(0,0,0,0.4)', marginBottom: '30px' }}>
-    
+            </div>
+          </div>
+          <p style={{ fontSize: '1.4rem', lineHeight: '1.4', color: '#fff', textShadow: '2px 2px 4px rgba(0,0,0,0.4)', marginBottom: '30px' }}>
+            {featuredMovie.description}
+          </p>
 
           <div style={{ display: 'flex', gap: '15px' }}>
             <button 
@@ -197,19 +210,25 @@ export default function Home() {
             overflowX: 'auto', 
             scrollbarWidth: 'none',
             msOverflowStyle: 'none'
-          }}>N=> (ndex} onClick={() => setSelectedMovie(movie)} />
+          }}>
+            {trendingNow.slice(0, 10).map((movie, index) => (
+              <Top10Item key={movie.id} movie={movie} index={index} onClick={() => setSelectedMovie(movie)} />
             ))}
           </div>
-        </secti
+        </section>
+
         {categories.map((cat, index) => (
           <section key={index} className="movies-section" style={{ padding: '20px 4%', boxSizing: 'border-box' }}>
-            <h2 className="section-title" style={{ fontSize: '
+            <h2 className="section-title" style={{ fontSize: '24px', marginBottom: '15px', fontWeight: 'bold', color: '#e5e5e5' }}>
+              {cat.title}
             </h2>
 
-            <div className="movie-row" style={{ display: v
+            <div className="movie-row" style={{ display: 'flex', gap: '10px', overflowX: 'auto' }}>
+              {cat.movies.map((movie) => (
+                <div
                   key={movie.id}
                   className="movie-card"
-               {{ minWidth: '150px', transition: 'transform 0.3s' }}
+                  style={{ minWidth: '150px', transition: 'transform 0.3s' }}
                 >
                   <img 
                     src={movie.image} 
