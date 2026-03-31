@@ -6,22 +6,16 @@ export default function Register() {
 
   // Lista de IDs de videos HD para la reproducción continua
   const trailerPlaylist = [
-    "73_1biulkYk", // Deadpool & Wolverine
-    "U2Qp5pL3ovA", // Dune: Parte Dos
-    "_OKAwz2jBI0", // Joker: Folie à Deux
-    "qqrpMRDuPpg", // Godzilla x Kong
-    "giXco2jaZ_4", // Top Gun: Maverick
-    "hR1-S223e5k", // Bad Boys 4
+    "73_1biulkYk", // Deadpool 3
+    "way9Dexny3w", // Dune 2
+    "XtFI7SNtVpY", // Planet of the Apes
+    "j7jPnwVGdZ8", // The Fall Guy
+    "giXco2jaZ_4"  // Top Gun Maverick
   ];
 
-  // Construimos la URL de la playlist para YouTube
-  // controls=0: Elimina la barra de tiempo y adelantar
-  // modestbranding=1: Quita el logo de YouTube
-  // iv_load_policy=3: Quita anotaciones de video
-  // disablekb=1: Desactiva atajos de teclado
   const firstVideo = trailerPlaylist[0];
-  const remainingPlaylist = trailerPlaylist.slice(1).join(",");
-  const cinematicUrl = `https://www.youtube.com/embed/${firstVideo}?autoplay=1&controls=0&loop=1&playlist=${remainingPlaylist},${firstVideo}&mute=0&vq=hd1080&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1`;
+  // Construcción de URL ultra-limpia para evitar errores de disponibilidad
+  const cinematicUrl = `https://www.youtube.com/embed/${firstVideo}?playlist=${trailerPlaylist.join(",")}&autoplay=1&mute=0&controls=0&loop=1&modestbranding=1&rel=0&vq=hd1080&iv_load_policy=3`;
 
   return (
     <div style={{ 
@@ -31,11 +25,11 @@ export default function Register() {
       position: "fixed", 
       top: 0, 
       left: 0, 
-      zIndex: 99999,
+      zIndex: 99999, 
       overflow: "hidden",
-      // Forzamos el reset del zoom global para que el video se vea nítido (HD real)
-      zoom: 1,
-      transform: "scale(1)"
+      // Eliminamos cualquier rastro de zoom del index.css para este componente
+      transform: "scale(1)",
+      zoom: "normal"
     }}>
       
       {/* BOTÓN REGRESAR AL HOME */}
@@ -69,24 +63,23 @@ export default function Register() {
       <div style={{ 
         width: "100%", 
         height: "100%", 
-        pointerEvents: "auto",
+        pointerEvents: "none", // Bloquea clics para que no se pause ni abra YouTube
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
       }}>
         <iframe 
-          width="100%"
-          height="100%"
+          width="100%" 
+          height="100%" 
           src={cinematicUrl} 
-          title="Netflix Trailers Cinematic" 
+          title="Syspelis Trailers" 
           frameBorder="0" 
-          allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" 
+          allow="autoplay; fullscreen" 
           style={{ 
-            width: "100vw",
-            height: "100vh",
-            objectFit: "cover",
-            transform: "scale(1.05)", // Ligero aumento para eliminar bordes y ajustar al 100%
-            filter: "contrast(1.1)"   // Mejora sutil de la claridad visual
+            width: "115vw",  // Más ancho para ocultar UI de YT
+            height: "115vh", // Más alto para ocultar UI de YT
+            transform: "scale(1.2)", // Escala épica para cubrir todo sin bordes
+            filter: "contrast(1.05) brightness(1.1)"
           }}
         ></iframe>
       </div>
