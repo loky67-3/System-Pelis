@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 // Datos simulados (Mock Data)
 const featuredMovie = {
-  title: "System: Peliculas y mas",
-  description: "Historias que te harán cuestionar la realidad, personajes que desafían los límites y mundos que existen más allá de la imaginación.",
+  title: "SYSTEM PELÍCULAS",
+  description: "En un futuro donde la realidad es programable, un grupo de usuarios rebeldes intenta hackear el sistema central para recuperar la libertad de elegir su propio destino cinematográfico. Una odisea visual sin precedentes.",
   image: "https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg",
 };
 
@@ -56,6 +56,59 @@ const plans = [
   { name: "Premium", price: "$229", quality: "Óptima", resolution: "4K+HDR", devices: "4 dispositivos", color: "#b81d24" },
 ];
 
+// Componente para los números del Top 10
+const Top10Item = ({ movie, index, onClick }) => {
+  return (
+    <div 
+      onClick={onClick}
+      style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        position: 'relative', 
+        minWidth: '280px', 
+        height: '220px',
+        cursor: 'pointer',
+        transition: 'transform 0.3s ease',
+        marginRight: '30px',
+        userSelect: 'none'
+      }}
+      onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.08)'}
+      onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+    >
+      {/* El Número Gigante */}
+      <span style={{ 
+        fontSize: '260px', 
+        fontFamily: '"Montserrat", sans-serif',
+        fontWeight: '800', 
+        color: '#000', 
+        WebkitTextStroke: '5px #595959',
+        textShadow: '0 0 20px rgba(0,0,0,0.5)',
+        lineHeight: '1',
+        position: 'absolute',
+        left: '-25px',
+        bottom: '-15px',
+        zIndex: 1,
+        letterSpacing: '-25px'
+      }}>{index + 1}</span>
+      
+      {/* Poster que solapa al número */}
+      <img 
+        src={movie.image} 
+        alt={movie.title} 
+        style={{ 
+          width: '140px', 
+          height: '100%', 
+          objectFit: 'cover', 
+          borderRadius: '4px', 
+          marginLeft: '85px',
+          zIndex: 2,
+          boxShadow: '10px 0 20px rgba(0,0,0,0.5)'
+        }} 
+      />
+    </div>
+  );
+};
+
 export default function Home() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const navigate = useNavigate();
@@ -100,32 +153,42 @@ export default function Home() {
       <section 
         className="hero-netflix" 
         style={{ 
-          backgroundImage: `url("${featuredMovie.image}")`,
+          height: '100vh',
+          background: `linear-gradient(to right, #141414 5%, rgba(20,20,20,0.2) 50%, rgba(20,20,20,0) 100%), 
+                       linear-gradient(to top, #141414 5%, rgba(20,20,20,0) 30%), 
+                       url("${featuredMovie.image}")`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center top'
+          backgroundPosition: 'center center'
         }}
       >
-        <div className="hero-overlay">
-          <h1 className="netflix-logo" style={{ marginBottom: '10px', textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+        <div className="hero-overlay" style={{ paddingLeft: '60px', background: 'none', maxWidth: '800px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '45px' }} />
+            <span style={{ letterSpacing: '5px', fontWeight: '800', color: '#e5e5e5', fontSize: '18px' }}>PELÍCULA</span>
+          </div>
+          <h1 className="netflix-logo" style={{ fontSize: 'clamp(2.5rem, 10vw, 6rem)', marginBottom: '15px', color: '#fff', textShadow: 'none' }}>
             {featuredMovie.title}
           </h1>
-          <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', fontSize: '16px', fontWeight: 'bold', color: '#46d369' }}>
-            <span>98% Coincidencia</span>
-            <span style={{ color: '#fff' }}>2026</span>
-            <span style={{ border: '1px solid #fff', padding: '0 5px', color: '#fff', fontSize: '12px' }}>TV-MA</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '25px', fontSize: '1.4rem', fontWeight: 'bold' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Number_10_in_red_rounded_square.svg/200px-Number_10_in_red_rounded_square.svg.png" alt="10" style={{ height: '30px' }} />
+              <span style={{ color: '#fff' }}>N.º 1 en películas hoy</span>
+            </div>
           </div>
-          <p style={{ maxWidth: '600px', fontSize: '18px', lineHeight: '1.4', textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
+          <p style={{ fontSize: '1.4rem', lineHeight: '1.4', color: '#fff', textShadow: '2px 2px 4px rgba(0,0,0,0.4)', marginBottom: '30px' }}>
             {featuredMovie.description}
           </p>
-          <div style={{ marginTop: '20px', display: 'flex', gap: '15px' }}>
+          <div style={{ display: 'flex', gap: '15px' }}>
             <button 
-              className="hero-btn" 
-              style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 25px' }}
+              className="hero-btn"
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px', padding: '12px 40px', fontSize: '1.4rem', background: '#fff', color: '#000', borderRadius: '4px' }}
               onClick={() => navigate('/register')}
+              onMouseOver={(e) => e.target.style.background = '#e6e6e6'}
+              onMouseOut={(e) => e.target.style.background = '#fff'}
             >
-              <span>▶</span> Reproducir
+              <span style={{ fontSize: '2rem' }}>▶</span> Reproducir
             </button>
-            <button className="hero-btn" style={{ background: 'rgba(109, 109, 110, 0.7)', color: 'white', display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 25px' }}>
+            <button className="hero-btn" style={{ background: 'rgba(109, 109, 110, 0.7)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px', padding: '12px 35px', fontSize: '1.4rem', borderRadius: '4px' }}>
               <span>ℹ️</span> Más Información
             </button>
           </div>
@@ -133,8 +196,26 @@ export default function Home() {
       </section>
 
       {/* === CATEGORÍAS DE PELÍCULAS === */}
-      <div className="content-overlap">
+      <div className="content-overlap" style={{ marginTop: '-120px', background: 'transparent' }}>
         
+        {/* SECCIÓN TOP 10 (NÚMEROS) */}
+        <section style={{ padding: '20px 4%', marginBottom: '40px' }}>
+          <h2 className="section-title" style={{ fontSize: '24px', marginBottom: '15px', fontWeight: 'bold', color: '#e5e5e5' }}>
+            Las 10 más populares en System hoy
+          </h2>
+          <div style={{ 
+            display: 'flex', 
+            overflowX: 'auto', 
+            padding: '20px 0', 
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none'
+          }}>
+            {trendingNow.slice(0, 10).map((movie, index) => (
+              <Top10Item key={movie.id} movie={movie} index={index} onClick={() => setSelectedMovie(movie)} />
+            ))}
+          </div>
+        </section>
+
         {categories.map((cat, index) => (
           <section key={index} className="movies-section" style={{ padding: '20px 4%', boxSizing: 'border-box' }}>
             <h2 className="section-title" style={{ fontSize: '24px', marginBottom: '15px', fontWeight: 'bold', color: '#e5e5e5' }}>

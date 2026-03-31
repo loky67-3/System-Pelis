@@ -13,7 +13,7 @@ body,
 #root {
   width: 100%;
   min-height: 100%;
-  background-color: #000;
+  background-color: #141414;
   color: #fff;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5, h6, .hero-btn, .nav a, .service-code-btn {
 .main-content {
   flex: 1;
   margin-top: 70px;
-  background-color: #141414;
+  background-color: #141414 !important;
 }
 
 /* =========================
@@ -217,22 +217,19 @@ h1, h2, h3, h4, h5, h6, .hero-btn, .nav a, .service-code-btn {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    #000 15%,
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0.2)
-  );
+  background: none;
   padding-left: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 10;
 }
 
 .netflix-logo {
-  font-size: 80px;
-  font-weight: 900;
-  color: #e50914;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -2px;
 }
 
 .hero-overlay p {
@@ -247,7 +244,7 @@ h1, h2, h3, h4, h5, h6, .hero-btn, .nav a, .service-code-btn {
   background: #e50914;
   border: none;
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
@@ -255,7 +252,6 @@ h1, h2, h3, h4, h5, h6, .hero-btn, .nav a, .service-code-btn {
 }
 
 .hero-btn:hover {
-  background: #f6121d;
   transform: scale(1.05);
 }
 
