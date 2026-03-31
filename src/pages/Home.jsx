@@ -162,8 +162,8 @@ export default function Home() {
         }}
       >
         {/* Añadimos un padding-top de 100px para que el Navbar no tape el texto */}
-        <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '100px', background: 'none', maxWidth: '850px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
+        <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '160px', background: 'none', maxWidth: '850px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '55px' }} />
             <span style={{ letterSpacing: '5px', fontWeight: '800', color: '#e5e5e5', fontSize: '18px' }}>PELÍCULA</span>
           </div>
@@ -198,7 +198,7 @@ export default function Home() {
       </section>
 
       {/* === CATEGORÍAS DE PELÍCULAS === */}
-      <div className="content-overlap" style={{ marginTop: '-180px', background: 'transparent', position: 'relative', zIndex: '20' }}>
+      <div className="content-overlap" style={{ marginTop: '-100px', background: 'transparent', position: 'relative', zIndex: '20' }}>
         
         {/* SECCIÓN TOP 10 (NÚMEROS) */}
         <section style={{ padding: '20px 4%', marginBottom: '20px' }}>

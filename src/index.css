@@ -16,7 +16,7 @@ body,
   -moz-transform-origin: top center;
   width: 100%;
   min-height: 100%;
-  background-color: #141414;
+  background-color: #52942c;
   color: #fff;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-rendering: optimizeLegibility;
@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6, .hero-btn, .nav a, .service-code-btn {
 .main-content {
   flex: 1;
   margin-top: 0; /* Quitamos el margen fijo para que el Hero sea inmersivo */
-  background-color: #141414 !important;
+  background-color: #fff !important;
 }
 
 /* =========================
