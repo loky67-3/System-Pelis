@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../firebase/firebase"; // Asegúrate que coincida con el nombre del archivo
 import { signOut } from "firebase/auth";
 import { useAuth } from "../context/AuthContext";
@@ -9,6 +9,10 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, role } = useAuth(); // Usamos el usuario y rol desde el contexto global
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Ocultar el Navbar completamente si estamos en la sección de trailers (Register)
+  if (location.pathname === "/register") return null;
 
   // Efecto para cambiar el fondo del header al hacer scroll
   useEffect(() => {
