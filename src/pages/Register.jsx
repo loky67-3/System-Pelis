@@ -6,11 +6,11 @@ export default function Register() {
 
   // Lista de IDs de videos HD para la reproducción continua
   const trailerPlaylist = [
-    "73_1biulkYk", // Deadpool 3
-    "U2Qp5pL3ovA", // Dune 2 (ID Corregido para asegurar disponibilidad)
-    "XtFI7SNtVpY", // Planet of the Apes
-    "j7jPnwVGdZ8", // The Fall Guy
-    "giXco2jaZ_4"  // Top Gun Maverick
+    "bjL7q97J8uA", // Gladiator II - Estreno Épico (Impresionante en HD)
+    "d9My665987w", // Avatar: El Camino del Agua - Visuales de Infarto
+    "Way9Dexny3w", // Dune: Parte Dos - Obra Maestra Cinematográfica
+    "shW9i6k8cB0", // Spider-Man: Across the Spider-Verse - Explosión de Color
+    "73_1biulkYk"  // Deadpool & Wolverine - Acción Pura
   ];
 
   const firstVideo = trailerPlaylist[0];
@@ -19,13 +19,12 @@ export default function Register() {
 
   return (
     <div style={{ 
-      backgroundColor: "#000",
       position: "fixed",
-      // Usamos dimensiones exageradas para compensar el zoom del 0.85 y cubrir todo
-      top: "-10vh",
-      left: "-10vw",
-      width: "120vw",
-      height: "120vh",
+      // Ajuste perfecto: 118vw/vh cubren exactamente el monitor físico al tener zoom 0.85
+      top: 0,
+      left: 0,
+      width: "118vw",
+      height: "118vh",
       zIndex: 99999,
       overflow: "hidden"
     }}>
