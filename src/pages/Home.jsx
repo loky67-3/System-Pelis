@@ -3,13 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 // Datos simulados (Mock Data)
 const featuredMovie = {
-  title: "SYSTEM PELÍCULAS",
-  description: "En un futuro donde la realidad es programable, un grupo de usuarios rebeldes intenta hackear el sistema central para recuperar la libertad de elegir su propio destino cinematográfico. Una odisea visual sin precedentes.",
-  image: "https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg",
-};
-
-const trendingNow = [
-  { id: 101, title: "Venom: Carnage Liberado", image: "https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" },
+  title: "1, title: "Venom: Carnage Liberado", image: "https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg" },
   { id: 102, title: "Intensamente 2", image: "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg" },
   { id: 103, title: "Dune: Parte Dos", image: "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" },
   { id: 104, title: "Godzilla Minus One", image: "https://image.tmdb.org/t/p/original/hkxxMIGaiCTmrEArK7J56JTKUlB.jpg" },
@@ -148,36 +142,25 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="netflix-page" style={{ overflowX: 'hidden' }}>
+    <div className="netflix-page" style={{ overflowX: 'hidden', marginTop: '0' }}>
       {/* === HERO SECTION === */}
-      <section 
-        className="hero-netflix" 
+      <sec
         style={{ 
-          height: '100vh',
-          background: `linear-gradient(to right, #141414 10%, rgba(20,20,20,0.1) 50%, rgba(20,20,20,0) 100%), 
-                       linear-gradient(to top, #141414 5%, rgba(20,20,20,0) 25%), 
+          height: '110vh', /* Un poco más alto para mayor impacto */
+          0,20,20,0) 40%), 
                        url("${featuredMovie.image}")`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center'
-        }}
-      >
-        <div className="hero-overlay" style={{ paddingLeft: '60px', background: 'none', maxWidth: '800px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '55px' }} />
-            <span style={{ letterSpacing: '5px', fontWeight: '800', color: '#e5e5e5', fontSize: '18px' }}>PELÍCULA</span>
-          </div>
-          <h1 className="netflix-logo" style={{ fontSize: 'clamp(3rem, 10vw, 6.5rem)', marginBottom: '15px', color: '#fff', textShadow: '2px 2px 10px rgba(0,0,0,0.5)' }}>
-            {featuredMovie.title}
-          </h1>
+          backgrou:
+        {/* Añadimos un padding-top de 100px para que el Navbar no tape el texto */}
+        <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '100px', background: 'none', maxWidth: '850px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
+            <img stt3e
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '25px', fontSize: '1.4rem', fontWeight: 'bold' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Number_10_in_red_rounded_square.svg/200px-Number_10_in_red_rounded_square.svg.png" alt="10" style={{ height: '30px' }} />
               <span style={{ color: '#fff' }}>N.º 1 en películas hoy</span>
-            </div>
-          </div>
-          <p style={{ fontSize: '1.4rem', lineHeight: '1.4', color: '#fff', textShadow: '2px 2px 4px rgba(0,0,0,0.4)', marginBottom: '30px' }}>
-            {featuredMovie.description}
-          </p>
+            </div>   <p style={{ fontSize: '1.4rem', lineHeight: '1.4', color: '#fff', textShadow: '2px 2px 4px rgba(0,0,0,0.4)', marginBottom: '30px' }}>
+    
+
           <div style={{ display: 'flex', gap: '15px' }}>
             <button 
               className="hero-btn"
@@ -196,39 +179,31 @@ export default function Home() {
       </section>
 
       {/* === CATEGORÍAS DE PELÍCULAS === */}
-      <div className="content-overlap" style={{ marginTop: '-120px', background: 'transparent' }}>
+      <div className="content-overlap" style={{ marginTop: '-180px', background: 'transparent', position: 'relative', zIndex: '20' }}>
         
         {/* SECCIÓN TOP 10 (NÚMEROS) */}
-        <section style={{ padding: '20px 4%', marginBottom: '40px' }}>
-          <h2 className="section-title" style={{ fontSize: '24px', marginBottom: '15px', fontWeight: 'bold', color: '#e5e5e5' }}>
+        <section style={{ padding: '20px 4%', marginBottom: '20px' }}>
+          <h2 className="section-title" style={{ fontSize: '26px', marginBottom: '15px', fontWeight: 'bold', color: '#e5e5e5', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
             Las 10 más populares en System hoy
           </h2>
-          <div style={{ 
+          <div className="no-scrollbar" style={{ 
             display: 'flex', 
             overflowX: 'auto', 
-            padding: '20px 0', 
             scrollbarWidth: 'none',
             msOverflowStyle: 'none'
-          }}>
-            {trendingNow.slice(0, 10).map((movie, index) => (
-              <Top10Item key={movie.id} movie={movie} index={index} onClick={() => setSelectedMovie(movie)} />
+          }}>N=> (ndex} onClick={() => setSelectedMovie(movie)} />
             ))}
           </div>
-        </section>
-
+        </secti
         {categories.map((cat, index) => (
           <section key={index} className="movies-section" style={{ padding: '20px 4%', boxSizing: 'border-box' }}>
-            <h2 className="section-title" style={{ fontSize: '24px', marginBottom: '15px', fontWeight: 'bold', color: '#e5e5e5' }}>
-              {cat.title}
+            <h2 className="section-title" style={{ fontSize: '
             </h2>
 
-            <div className="movie-row" style={{ display: 'flex', gap: '10px', overflowX: 'auto', paddingBottom: '20px', scrollbarWidth: 'none' }}>
-              {cat.movies.map((movie) => (
-                <div
+            <div className="movie-row" style={{ display: v
                   key={movie.id}
                   className="movie-card"
-                  onClick={() => setSelectedMovie(movie)}
-                  style={{ minWidth: '150px', transition: 'transform 0.3s' }}
+               {{ minWidth: '150px', transition: 'transform 0.3s' }}
                 >
                   <img 
                     src={movie.image} 

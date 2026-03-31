@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6, .hero-btn, .nav a, .service-code-btn {
 
 .main-content {
   flex: 1;
-  margin-top: 70px;
+  margin-top: 0; /* Quitamos el margen fijo para que el Hero sea inmersivo */
   background-color: #141414 !important;
 }
 
