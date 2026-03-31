@@ -32,7 +32,10 @@ export default function Register() {
       top: 0, 
       left: 0, 
       zIndex: 99999,
-      overflow: "hidden" 
+      overflow: "hidden",
+      // Forzamos el reset del zoom global para que el video se vea nítido (HD real)
+      zoom: 1,
+      transform: "scale(1)"
     }}>
       
       {/* BOTÓN REGRESAR AL HOME */}
@@ -66,19 +69,24 @@ export default function Register() {
       <div style={{ 
         width: "100%", 
         height: "100%", 
-        pointerEvents: "auto" 
+        pointerEvents: "auto",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
       }}>
         <iframe 
-          width="100%" 
-          height="100%" 
+          width="100%"
+          height="100%"
           src={cinematicUrl} 
           title="Netflix Trailers Cinematic" 
           frameBorder="0" 
           allow="autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" 
           style={{ 
-            width: "100vw", 
-            height: "100vh", 
-            objectFit: "cover" 
+            width: "100vw",
+            height: "100vh",
+            objectFit: "cover",
+            transform: "scale(1.05)", // Ligero aumento para eliminar bordes y ajustar al 100%
+            filter: "contrast(1.1)"   // Mejora sutil de la claridad visual
           }}
         ></iframe>
       </div>
