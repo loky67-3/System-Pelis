@@ -23,8 +23,8 @@ export default function Register() {
       // Compensación exacta para el zoom 0.85 (100 / 0.85 = 117.65)
       top: 0,
       left: 0,
-      width: "117.7vw",
-      height: "117.7vh",
+      width: "100%",
+      height: "150vh",
       zIndex: 99999,
       overflow: "hidden",
       backgroundColor: "#000",

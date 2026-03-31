@@ -1,6 +1,5 @@
 import Header from "./components/Header.jsx"
 import AppRoutes from "./routes/AppRoutes.jsx"
-import Footer from "./components/Footer.jsx" // ✅ IMPORTANTE
 import "./index.css"
 
 
@@ -14,9 +13,6 @@ export default function App() {
       <main className="main-content">
         <AppRoutes />
       </main>
-
-      {/* 3. Footer siempre abajo */}
-      <Footer />
     </div>
   )
 }
