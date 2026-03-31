@@ -7,29 +7,27 @@ export default function Register() {
   // Lista de IDs de videos HD para la reproducción continua
   const trailerPlaylist = [
     "73_1biulkYk", // Deadpool 3
-    "way9Dexny3w", // Dune 2
+    "U2Qp5pL3ovA", // Dune 2 (ID Corregido para asegurar disponibilidad)
     "XtFI7SNtVpY", // Planet of the Apes
     "j7jPnwVGdZ8", // The Fall Guy
     "giXco2jaZ_4"  // Top Gun Maverick
   ];
 
   const firstVideo = trailerPlaylist[0];
-  // URL optimizada: evitamos parámetros conflictivos para asegurar disponibilidad y HD
-  const cinematicUrl = `https://www.youtube.com/embed/${firstVideo}?playlist=${trailerPlaylist.join(",")}&autoplay=1&mute=0&controls=0&loop=1&modestbranding=1&rel=0&vq=hd1080&iv_load_policy=3&showinfo=0&disablekb=1`;
+  // URL ultra-limpia: autoplay, sin controles, sin logos y en HD
+  const cinematicUrl = `https://www.youtube.com/embed/${firstVideo}?playlist=${trailerPlaylist.join(",")}&autoplay=1&mute=0&controls=0&loop=1&modestbranding=1&rel=0&vq=hd1080&iv_load_policy=3&disablekb=1&autohide=1`;
 
   return (
     <div style={{ 
-      backgroundColor: "#000", 
-      height: "100vh", 
-      width: "100vw", 
-      position: "fixed", 
-      top: 0, 
-      left: 0, 
-      zIndex: 99999, 
-      overflow: "hidden",
-      // Reset absoluto del zoom para evitar borrosidad y asegurar 100% de cobertura
-      zoom: 1,
-      transform: "scale(1)"
+      backgroundColor: "#000",
+      position: "fixed",
+      // Usamos dimensiones exageradas para compensar el zoom del 0.85 y cubrir todo
+      top: "-10vh",
+      left: "-10vw",
+      width: "120vw",
+      height: "120vh",
+      zIndex: 99999,
+      overflow: "hidden"
     }}>
       
       {/* BOTÓN REGRESAR AL HOME */}
@@ -61,25 +59,27 @@ export default function Register() {
 
       {/* REPRODUCTOR FULLSCREEN */}
       <div style={{ 
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%) scale(1.35)", // Escala para ocultar UI de YouTube
-        width: "max(100vw, 177.78vh)", // Mantiene proporción 16:9 cubriendo todo el ancho
-        height: "max(100vh, 56.25vw)", // Mantiene proporción 16:9 cubriendo todo el alto
-        pointerEvents: "none",
+        position: "relative",
+        width: "100%",
+        height: "100%",
+        pointerEvents: "none", // Evita interactuar con YouTube (no pausa, no links)
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
       }}>
         <iframe 
-          width="100%"
-          height="100%"
+          width="100%" 
+          height="100%" 
           src={cinematicUrl} 
           title="Syspelis Trailers" 
           frameBorder="0" 
           allow="autoplay; fullscreen"
-          style={{ border: "none" }}
+          style={{ 
+            width: "100%", 
+            height: "100%", 
+            transform: "scale(1.5)", // Escala para ocultar los bordes negros y la interfaz de YouTube
+            border: "none" 
+          }}
         ></iframe>
       </div>
     </div>
