@@ -14,12 +14,12 @@ export default function Register() {
   ];
 
   const firstVideo = trailerPlaylist[0];
-  // Construcción de URL ultra-limpia para evitar errores de disponibilidad
-  const cinematicUrl = `https://www.youtube.com/embed/${firstVideo}?playlist=${trailerPlaylist.join(",")}&autoplay=1&mute=0&controls=0&loop=1&modestbranding=1&rel=0&vq=hd1080&iv_load_policy=3`;
+  // URL optimizada: evitamos parámetros conflictivos para asegurar disponibilidad y HD
+  const cinematicUrl = `https://www.youtube.com/embed/${firstVideo}?playlist=${trailerPlaylist.join(",")}&autoplay=1&mute=0&controls=0&loop=1&modestbranding=1&rel=0&vq=hd1080&iv_load_policy=3&showinfo=0&disablekb=1`;
 
   return (
     <div style={{ 
-      background: "#000", 
+      backgroundColor: "#000", 
       height: "100vh", 
       width: "100vw", 
       position: "fixed", 
@@ -27,9 +27,9 @@ export default function Register() {
       left: 0, 
       zIndex: 99999, 
       overflow: "hidden",
-      // Eliminamos cualquier rastro de zoom del index.css para este componente
-      transform: "scale(1)",
-      zoom: "normal"
+      // Reset absoluto del zoom para evitar borrosidad y asegurar 100% de cobertura
+      zoom: 1,
+      transform: "scale(1)"
     }}>
       
       {/* BOTÓN REGRESAR AL HOME */}
@@ -61,26 +61,25 @@ export default function Register() {
 
       {/* REPRODUCTOR FULLSCREEN */}
       <div style={{ 
-        width: "100%", 
-        height: "100%", 
-        pointerEvents: "none", // Bloquea clics para que no se pause ni abra YouTube
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%) scale(1.35)", // Escala para ocultar UI de YouTube
+        width: "max(100vw, 177.78vh)", // Mantiene proporción 16:9 cubriendo todo el ancho
+        height: "max(100vh, 56.25vw)", // Mantiene proporción 16:9 cubriendo todo el alto
+        pointerEvents: "none",
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
       }}>
         <iframe 
-          width="100%" 
-          height="100%" 
+          width="100%"
+          height="100%"
           src={cinematicUrl} 
           title="Syspelis Trailers" 
           frameBorder="0" 
-          allow="autoplay; fullscreen" 
-          style={{ 
-            width: "115vw",  // Más ancho para ocultar UI de YT
-            height: "115vh", // Más alto para ocultar UI de YT
-            transform: "scale(1.2)", // Escala épica para cubrir todo sin bordes
-            filter: "contrast(1.05) brightness(1.1)"
-          }}
+          allow="autoplay; fullscreen"
+          style={{ border: "none" }}
         ></iframe>
       </div>
     </div>
