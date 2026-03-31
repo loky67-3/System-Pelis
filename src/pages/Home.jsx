@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 // Datos simulados (Mock Data)
 const featuredMovie = {
   title: "DUNA: PARTE DOS",
-  description: "Paul Atreides se une a Chani y a los Fremen en una guerra de venganza contra los conspiradores que destruyeron a su familia. Al enfrentarse a una elección entre el amor de su vida y el destino del universo, lucha por evitar un futuro terrible.",
+  description: "Paul Atreides se une a Chani y a los Fremen en una guerra de venganza contra los conspiradores que destruyeron a su familia. Al enfrentarse a una elección entre el amor de su vida y el destino del universo, lucha por evitar un futuro terrible cinematográfico.",
   image: "https://image.tmdb.org/t/p/original/8Y99mUfW99Z97S31Z39tN6S17mN.jpg",
 };
 
@@ -150,16 +150,25 @@ export default function Home() {
   return (
     <div className="netflix-page" style={{ overflowX: 'hidden', marginTop: '0' }}>
       {/* === HERO SECTION === */}
-      <sec
+      <section 
+        className="hero-netflix"
         style={{ 
-          height: '110vh', /* Un poco más alto para mayor impacto */
-          0,20,20,0) 40%), 
+          height: '100vh',
+          background: `linear-gradient(to right, #141414 15%, rgba(20,20,20,0.2) 50%, rgba(20,20,20,0) 100%), 
+                       linear-gradient(to top, #141414 10%, rgba(20,20,20,0) 40%), 
                        url("${featuredMovie.image}")`,
-          backgrou:
-        {/* Añadimos un padding-top de 100px para que el Navbar no tape el texto */}
-        <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '100px', background: 'none', maxWidth: '850px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
-            <img stt3e
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center'
+        }}
+      >
+        <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '280px', background: 'none', maxWidth: '850px', zIndex: 25 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '55px' }} />
+            <span style={{ letterSpacing: '5px', fontWeight: '800', color: '#e5e5e5', fontSize: '22px' }}>PELÍCULA</span>
+          </div>
+          <h1 className="netflix-logo" style={{ fontSize: 'clamp(3rem, 10vw, 6.5rem)', marginBottom: '15px', color: '#fff', textShadow: '2px 2px 10px rgba(0,0,0,0.5)' }}>
+            {featuredMovie.title}
+          </h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '25px', fontSize: '1.4rem', fontWeight: 'bold' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Number_10_in_red_rounded_square.svg/200px-Number_10_in_red_rounded_square.svg.png" alt="10" style={{ height: '30px' }} />
@@ -180,7 +189,7 @@ export default function Home() {
           <h2 className="section-title" style={{ fontSize: '26px', marginBottom: '15px', fontWeight: 'bold', color: '#e5e5e5', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
             Las 10 más populares en System hoy
           </h2>
-          <div style={{ 
+          <div className="no-scrollbar" style={{ 
             display: 'flex', 
             overflowX: 'auto', 
             scrollbarWidth: 'none',
