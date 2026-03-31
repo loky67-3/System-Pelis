@@ -11,8 +11,8 @@
 html,
 body,
 #root {
-  zoom: 0.9; 
-  -moz-transform: scale(0.9); /* Sincronizado con el zoom 0.9 */
+  zoom: 0.70; 
+  -moz-transform: scale(0.75); /* Sincronizado con el zoom 0.75 */
   -moz-transform-origin: top center;
   width: 100%;
   min-height: 100%;

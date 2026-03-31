@@ -77,13 +77,13 @@ const Top10Item = ({ movie, index, onClick }) => {
     >
       {/* El Número Gigante */}
       <span style={{ 
-        fontSize: '280px', /* Ajustado para escala 0.9 */
+        fontSize: '300px', /* Aumentado ligeramente para compensar el zoom 0.75 */
         fontFamily: '"Montserrat", sans-serif',
         fontWeight: '900', 
         color: '#000', 
         WebkitTextStroke: '6px #595959',
         textShadow: '0 0 20px rgba(0,0,0,0.5)',
-        lineHeight: '0.9',
+        lineHeight: '0.85',
         position: 'absolute',
         left: '-25px',
         bottom: '-15px',
@@ -161,7 +161,7 @@ export default function Home() {
           backgroundPosition: 'center center'
         }}
       >
-        <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '280px', background: 'none', maxWidth: '850px', zIndex: 25 }}>
+        <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '220px', background: 'none', maxWidth: '850px', zIndex: 25 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '55px' }} />
             <span style={{ letterSpacing: '5px', fontWeight: '800', color: '#e5e5e5', fontSize: '22px' }}>PELÍCULA</span>
@@ -209,10 +209,11 @@ export default function Home() {
 
             <div className="movie-row" style={{ display: 'flex', gap: '10px', overflowX: 'auto' }}>
               {cat.movies.map((movie) => (
-                <div
-                  key={movie.id}
-                  className="movie-card"
-                  style={{ minWidth: '150px', transition: 'transform 0.3s' }}
+                <div 
+                  key={movie.id} 
+                  className="movie-card" 
+                  style={{ minWidth: '150px', transition: 'transform 0.3s' }} 
+                  onClick={() => setSelectedMovie(movie)}
                 >
                   <img 
                     src={movie.image} 
