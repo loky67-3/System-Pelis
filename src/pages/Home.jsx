@@ -163,7 +163,7 @@ export default function Home() {
       >
         {/* Aumentamos el padding-top para bajar el contenido y zIndex para que no se tape */}
         <div className="hero-overlay" style={{ paddingLeft: '60px', paddingTop: '280px', background: 'none', maxWidth: '850px', zIndex: 25 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '15px' }}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Netflix-new-icon.png" alt="N" style={{ height: '55px' }} />
             <span style={{ letterSpacing: '5px', fontWeight: '800', color: '#e5e5e5', fontSize: '22px' }}>PELÍCULA</span>
           </div>
@@ -198,31 +198,37 @@ export default function Home() {
       </section>
 
       {/* === CATEGORÍAS DE PELÍCULAS === */}
-      <div className="content-overlap" style={{ marginTop: '-80px', background: 'transparent', position: 'relative', zIndex: '20' }}>
+      <div className="content-overlap" style={{ marginTop: '-180px', background: 'transparent', position: 'relative', zIndex: '20' }}>
         
         {/* SECCIÓN TOP 10 (NÚMEROS) */}
         <section style={{ padding: '20px 4%', marginBottom: '20px' }}>
           <h2 className="section-title" style={{ fontSize: '26px', marginBottom: '15px', fontWeight: 'bold', color: '#e5e5e5', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
             Las 10 más populares en System hoy
           </h2>
-          <div style={{ 
+          <div className="no-scrollbar" style={{ 
             display: 'flex', 
             overflowX: 'auto', 
             scrollbarWidth: 'none',
             msOverflowStyle: 'none'
-          }}>N=> (ndex} onClick={() => setSelectedMovie(movie)} />
+          }}>
+            {trendingNow.slice(0, 10).map((movie, index) => (
+              <Top10Item key={movie.id} movie={movie} index={index} onClick={() => setSelectedMovie(movie)} />
             ))}
           </div>
-        </secti
+        </section>
+
         {categories.map((cat, index) => (
           <section key={index} className="movies-section" style={{ padding: '20px 4%', boxSizing: 'border-box' }}>
-            <h2 className="section-title" style={{ fontSize: '
+            <h2 className="section-title" style={{ fontSize: '24px', marginBottom: '15px', fontWeight: 'bold', color: '#e5e5e5' }}>
+              {cat.title}
             </h2>
 
-            <div className="movie-row" style={{ display: v
+            <div className="movie-row" style={{ display: 'flex', gap: '10px', overflowX: 'auto' }}>
+              {cat.movies.map((movie) => (
+                <div
                   key={movie.id}
                   className="movie-card"
-               {{ minWidth: '150px', transition: 'transform 0.3s' }}
+                  style={{ minWidth: '150px', transition: 'transform 0.3s' }}
                 >
                   <img 
                     src={movie.image} 
