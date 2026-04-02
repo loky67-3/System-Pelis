@@ -17,7 +17,7 @@ body,
   width: 100%;
   min-height: 100%;
   background: radial-gradient(circle at 50% 0%, #0f172a 0%, #020617 100%) fixed;
-  color: red;
+  color: #fff;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
